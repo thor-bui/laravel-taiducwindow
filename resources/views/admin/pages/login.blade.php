@@ -14,7 +14,7 @@
 
                     <form action="{{route('login')}}" method="post">
                         @csrf
-
+                        @include('admin.blocks.alert')
                         <div class="input-group mb-3">
                             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                                    placeholder="Email">
