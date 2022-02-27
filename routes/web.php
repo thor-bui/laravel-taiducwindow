@@ -19,7 +19,7 @@ Route::post('admin/login', [LoginController::class, 'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', function () {
-        return 'dashboard';
+        return view('layouts.admin');
     })->name('dashboard');
 });
 
