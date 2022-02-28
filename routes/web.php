@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LogoutController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,10 @@ Route::post('admin/login', [LoginController::class, 'store']);
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('layouts.admin');
-        })->name('dashboard');
+        // product category router
+        Route::get('/', [ProductCategoryController::class, 'index']);
+        Route::get('/category/add', [ProductCategoryController::class, 'index'])->name('add-category');
+        Route::post('/category/add', [ProductCategoryController::class, 'store']);
 
         Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
     });

@@ -28,7 +28,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->input('remember'))) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard');
+            return redirect()->route('add-category');
         }
 
         Session::flash('error', 'Email hoặc password không hợp lệ.');
