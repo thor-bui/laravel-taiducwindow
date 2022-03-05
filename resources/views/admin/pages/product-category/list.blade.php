@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+    @include('admin.blocks.alert')
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Danh sách danh mục</h3>

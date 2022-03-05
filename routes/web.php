@@ -26,11 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
 
         # product category router
-        Route::controller(ProductCategoryController::class)->group(function () {
+        Route::controller(ProductCategoryController::class)->name('category.')->group(function () {
             Route::get('/', 'index');
-            Route::get('/category/add', 'index')->name('add-category');
+            Route::get('/category/add', 'index')->name('add');
             Route::post('/category/add', 'store');
-            Route::get('/category/list', 'getAllProductCategory')->name('list-category');
+            Route::get('/category/list', 'getAllProductCategory')->name('list');
         });
 
 

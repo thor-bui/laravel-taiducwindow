@@ -32,6 +32,6 @@ class ProductCategoryService
 
     public function getAllCategory()
     {
-        return ProductCategory::all();
+        return ProductCategory::all()->sortByDesc('created_at');
     }
 }

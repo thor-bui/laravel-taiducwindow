@@ -25,14 +25,12 @@ class ProductCategoryController extends Controller
     {
         $this->productCategoryService->create($request);
 
-        return back();
+        return redirect()->route('category.list')->with('success', 'Thêm danh mục thành công.');
     }
 
     public function getAllProductCategory()
     {
         $categories = $this->productCategoryService->getAllCategory();
-        return view('admin.pages.product-category.list', [
-            'categories' => $categories
-        ]);
+        return view('admin.pages.product-category.list', compact('categories'));
     }
 }

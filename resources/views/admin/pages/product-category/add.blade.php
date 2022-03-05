@@ -7,7 +7,7 @@
         <div class="card-header">
             <h3 class="card-title">Thêm Danh Mục Sản Phẩm</h3>
         </div>
-        <form action="{{route('add-category')}}" method="post">
+        <form action="{{route('category.add')}}" method="post">
             @csrf
             <div class="card-body">
                 <div class="form-group">

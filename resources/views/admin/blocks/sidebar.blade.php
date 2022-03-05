@@ -26,14 +26,14 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('add-category')}}"
+                        <a href="{{route('category.add')}}"
                            class="nav-link {{request()->is('admin/category/add') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Thêm danh mục</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('list-category')}}"
+                        <a href="{{route('category.list')}}"
                            class="nav-link {{request()->is('admin/category/list') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Danh sách danh mục</p>
