@@ -11,13 +11,13 @@
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="product-category">Tên danh mục</label>
+                    <label for="name">Tên danh mục</label>
 
-                    <input type="text" name="product-category"
-                           class="form-control @error('product-category') is-invalid @enderror"
-                           id="product-category" placeholder="Nhập tên danh mục">
+                    <input type="text" name="name"
+                           class="form-control @error('name') is-invalid @enderror"
+                           id="name" placeholder="Nhập tên danh mục">
 
-                    @error('product-category')
+                    @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

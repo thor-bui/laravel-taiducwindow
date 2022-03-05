@@ -11,11 +11,15 @@ class ProductCategoryService
     {
 
         $request->validate([
-            'product-category' => 'required|max:100'
+            'name' => 'required|max:100|unique:product_categories'
+        ], [
+            'name.required' => 'Tên danh mục là bắt buộc.',
+            'name.max' => 'Tên danh mục không dài quá 100 ký tự.',
+            'name.unique' => "Tên danh mục đã tồn tại."
         ]);
         try {
             ProductCategory::create([
-                'name' => strtolower($request->input('product-category'))
+                'name' => strtolower($request->input('name'))
             ]);
 
             Session::flash('success', 'Thêm danh mục thành công.');
