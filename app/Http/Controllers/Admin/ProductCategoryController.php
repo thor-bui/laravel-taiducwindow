@@ -27,4 +27,12 @@ class ProductCategoryController extends Controller
 
         return back();
     }
+
+    public function getAllProductCategory()
+    {
+        $categories = $this->productCategoryService->getAllCategory();
+        return view('admin.pages.product-category.list', [
+            'categories' => $categories
+        ]);
+    }
 }

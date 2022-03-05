@@ -25,4 +25,9 @@ class ProductCategoryService
 
 
     }
+
+    public function getAllCategory()
+    {
+        return ProductCategory::all();
+    }
 }

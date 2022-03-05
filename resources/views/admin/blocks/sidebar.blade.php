@@ -16,7 +16,8 @@
             data-accordion="false">
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#"
+                   class="nav-link {{request()->is('admin/category/add') || request()->is('admin/category/list') ? 'active' : ''}}">
                     <i class="fas fa-list"></i>
                     <p>
                         Danh mục sản phẩm
@@ -32,7 +33,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index2.html" class="nav-link">
+                        <a href="{{route('list-category')}}"
+                           class="nav-link {{request()->is('admin/category/list') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Danh sách danh mục</p>
                         </a>

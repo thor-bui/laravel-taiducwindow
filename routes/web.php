@@ -16,18 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/login', [LoginController::class, 'index'])->name('login');
-Route::post('admin/login', [LoginController::class, 'store']);
+Route::controller(LoginController::class)->group(function () {
+    Route::get('admin/login', 'index')->name('login');
+    Route::post('admin/login', 'store');
+});
 
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
 
-        // product category router
-        Route::get('/', [ProductCategoryController::class, 'index']);
-        Route::get('/category/add', [ProductCategoryController::class, 'index'])->name('add-category');
-        Route::post('/category/add', [ProductCategoryController::class, 'store']);
+        # product category router
+        Route::controller(ProductCategoryController::class)->group(function () {
+            Route::get('/', 'index');
+            Route::get('/category/add', 'index')->name('add-category');
+            Route::post('/category/add', 'store');
+            Route::get('/category/list', 'getAllProductCategory')->name('list-category');
+        });
 
+
+        # logout
         Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
     });
 
