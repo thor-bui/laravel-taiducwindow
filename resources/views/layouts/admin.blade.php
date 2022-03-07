@@ -16,7 +16,7 @@
                     <span class="brand-text font-weight-light">AdminTDW</span>
                 </a>
 
-                <!-- Sidebar -->
+            <!-- Sidebar -->
             @include('admin.blocks.sidebar')
             <!-- /.sidebar -->
             </aside>

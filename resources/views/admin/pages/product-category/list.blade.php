@@ -2,6 +2,8 @@
 
 @section('content')
     @include('admin.blocks.alert')
+    <a href="{{route('category.add')}}" class="btn btn-outline-secondary mb-3"><i class="fas fa-plus"></i>
+        Thêm danh mục sản phẩm</a>
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Danh sách danh mục</h3>
@@ -25,8 +27,10 @@
                             <td>{{ date('d/m/y', strtotime($category->created_at)) }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button class="btn btn-secondary mr-1"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    <a href="{{route('category.edit', ['id' => $category->id])}}"
+                                       class="btn btn-secondary mr-1"><i class="fas fa-edit"></i></a>
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i
+                                            class="fas fa-trash"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -41,5 +45,7 @@
         <div class="card-footer clearfix">
 
         </div>
+
+        @include('admin.blocks.confirm-modal')
     </div>
 @endsection
