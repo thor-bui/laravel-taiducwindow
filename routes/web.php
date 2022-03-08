@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/category/list', 'getAllProductCategory')->name('list');
             Route::get('/category/edit/{id?}', 'getUpdateProductCategory')->name('edit');
             Route::put('/category/edit/{id}', 'updateProductCategory');
+            Route::delete('/category/delete', 'deleteProductCategory');
         });
 
 

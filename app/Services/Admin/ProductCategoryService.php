@@ -49,6 +49,17 @@ class ProductCategoryService
 
     }
 
+    public function deleteProductCategoryById($request)
+    {
+        $category = ProductCategory::where('id', $request->input('id'))->first();
+        if ($category) {
+            $category->delete();
+            return true;
+        }
+        return false;
+    }
+
+
     public function validateRequest($request)
     {
         $request->validate([

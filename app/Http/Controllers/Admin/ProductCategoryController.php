@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\ProductCategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductCategoryController extends Controller
 {
@@ -50,5 +51,23 @@ class ProductCategoryController extends Controller
             return redirect()->route('category.list')->with('success', 'Cập nhật danh mục thành công.');
         }
         return redirect()->route('category.list')->with('success', 'Cập nhật danh mục thất bại.');
+    }
+
+    public function deleteProductCategory(Request $request)
+    {
+        $result = $this->productCategoryService->deleteProductCategoryById($request);
+        if ($result) {
+            Session::flash('success', 'Xóa danh mục thành công.');
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa danh mục thành công.'
+            ]);
+        }
+
+        Session::flash('error', 'Xóa danh mục thất bại.');
+        return response()->json([
+            'error' => true,
+            'message' => 'Xóa danh mục thất bại.'
+        ]);
     }
 }

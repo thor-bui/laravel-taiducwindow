@@ -29,7 +29,8 @@
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{route('category.edit', ['id' => $category->id])}}"
                                        class="btn btn-secondary mr-1"><i class="fas fa-edit"></i></a>
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i
+                                    <button class="btn btn-danger"
+                                            onclick="deleteProductCategoryById('{{ $category->id }}', '/admin/category/delete')"><i
                                             class="fas fa-trash"></i></button>
                                 </div>
                             </td>
@@ -41,11 +42,8 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer clearfix">
-
-        </div>
-
-        @include('admin.blocks.confirm-modal')
     </div>
+
+    {{--  confirm modal --}}
+    <x-confirm-modal title="Xóa Danh Mục Sản Phẩm" content="Bạn có chắc chắn xóa danh mục này không ?"/>
 @endsection
