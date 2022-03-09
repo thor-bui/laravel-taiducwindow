@@ -27,13 +27,13 @@ Route::middleware('auth')->group(function () {
 
         # product category router
         Route::controller(ProductCategoryController::class)->name('category.')->group(function () {
-            Route::get('/', 'getAllProductCategory');
-            Route::get('/category/add', 'getCreateProductCategory')->name('add');
-            Route::post('/category/add', 'createProductCategory');
-            Route::get('/category/list', 'getAllProductCategory')->name('list');
-            Route::get('/category/edit/{id?}', 'getUpdateProductCategory')->name('edit');
-            Route::put('/category/edit/{id}', 'updateProductCategory');
-            Route::delete('/category/delete', 'deleteProductCategory');
+            Route::get('/', 'index');
+            Route::get('/category/list', 'index')->name('list');
+            Route::get('/category/add', 'create')->name('add');
+            Route::post('/category/add', 'store');
+            Route::get('/category/edit/{id}', 'edit')->name('edit');
+            Route::put('/category/edit/{id}', 'update');
+            Route::delete('/category/delete', 'destroy');
         });
 
 

@@ -16,26 +16,46 @@ class ProductCategoryController extends Controller
         $this->productCategoryService = $productCategoryService;
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     */
+    public function index()
+    {
+        $categories = $this->productCategoryService->getAllCategories();
+        return view('admin.pages.product-category.list', compact('categories'));
+    }
 
-    public function getCreateProductCategory()
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     */
+    public function create()
     {
         return view('admin.pages.product-category.add');
     }
 
-    public function createProductCategory(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
     {
         $this->productCategoryService->create($request);
 
         return redirect()->route('category.list')->with('success', 'Thêm danh mục thành công.');
     }
 
-    public function getAllProductCategory()
-    {
-        $categories = $this->productCategoryService->getAllCategories();
-        return view('admin.pages.product-category.list', compact('categories'));
-    }
 
-    public function getUpdateProductCategory($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     */
+    public function edit($id)
     {
         $category = $this->productCategoryService->getCategoryById($id);
         if (is_null($category)) {
@@ -44,7 +64,14 @@ class ProductCategoryController extends Controller
         return view('admin.pages.product-category.edit', compact('category'));
     }
 
-    public function updateProductCategory(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
     {
         $isUpdatedSuccess = $this->productCategoryService->updateCategoryById($request, $id);
         if ($isUpdatedSuccess) {
@@ -53,7 +80,11 @@ class ProductCategoryController extends Controller
         return redirect()->route('category.list')->with('success', 'Cập nhật danh mục thất bại.');
     }
 
-    public function deleteProductCategory(Request $request)
+    /**
+     * Remove the specified resource from storage.
+     *
+     */
+    public function destroy(Request $request)
     {
         $result = $this->productCategoryService->deleteProductCategoryById($request);
         if ($result) {
